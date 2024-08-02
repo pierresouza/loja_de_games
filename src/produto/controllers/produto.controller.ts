@@ -9,10 +9,13 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { Produto } from '../entities/produto.entity';
 import { ProdutoService } from '../service/produto.service';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/produtos')
 export class ProdutoController {
   constructor(private produtoService: ProdutoService) {}
